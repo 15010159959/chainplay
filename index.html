@@ -75,22 +75,22 @@
                     <h5>Purchases of .1 NAS or more have a 1.3% chance to win some of the 2.23 NAS airdrop pot, instantly!</h5>
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" style="width: 65%;" placeholder="1 Key">
+                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 65%;" value="1" disabled>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled style="width: 33%;">@ 1.22 NAS</button>
                         </form>
                     </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> + 1
+                        <label class="btn btn-secondary active"  id="add1" >
+                            <input type="radio" name="options" autocomplete="off" checked> + 1
                         </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> + 2
+                        <label class="btn btn-secondary" id="add2">
+                            <input type="radio" name="options"  autocomplete="off"> + 2
                         </label>
-                        <label class="btn btn-secondary ">
-                            <input type="radio" name="options" id="option3" autocomplete="off"> + 5
+                        <label class="btn btn-secondary "  id="add5" >
+                            <input type="radio" name="options"autocomplete="off"> + 5
                         </label>
-                        <label class="btn btn-secondary active">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> + 10
+                        <label class="btn btn-secondary active"  id="add10" >
+                            <input type="radio" name="options"autocomplete="off"> + 10
                         </label>
                     </div>
                     <div class="click">
@@ -127,6 +127,8 @@
     </div>
 
     <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/nebPay.js"></script>
+    <script src="lib/nebulas.js"></script>
     <script src="lib/index.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script>
@@ -167,8 +169,157 @@
                 return (n < 10 ? '0' : '') + n;
             }
 
+            // 增加key
+            $("#add1").click(function(){
+                $("#account").val(parseInt($("#account").val())+1);
+            })
+            $("#add2").click(function(){
+                $("#account").val(parseInt($("#account").val())+2);
+            })
+            $("#add5").click(function(){
+                $("#account").val(parseInt($("#account").val())+5);
+            })
+            $("#add10").click(function(){
+                $("#account").val(parseInt($("#account").val())+10);
+            })
+
         });
     </script>
+    <script>
+            "use strict";
+            // $("#search_value").attr("disabled",true)
+            // $("#search").attr("disabled",true)
+            // //to check if the extension is installed
+            // //if the extension is installed, var "webExtensionWallet" will be injected in to web page
+            // if(typeof(webExtensionWallet) === "undefined"){
+            //     //alert ("Extension wallet is not installed, please install it first.")
+            //     $("#noExtension").removeClass("hide")
+            // }else{
+            //     $("#search_value").attr("disabled",false)
+            //     $("#search").attr("disabled",false)
+            // }
+            var dappAddress = "n1oXdmwuo5jJRExnZR5rbceMEyzRsPeALgm";
+            //here we use neb.js to call the "get" function to search from the Dictionary
+            var nebulas = require("nebulas"),
+                Account = nebulas.Account,
+                neb = new nebulas.Neb();
+            neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+            // 页面加载时请求数据
+            $("#search").click(function(){
+                // $("#search_value").val() 搜索框内的值
+                var from = Account.NewAccount().getAddressString();
+                var value = "0";
+                var nonce = "0"
+                var gas_price = "1000000"
+                var gas_limit = "2000000"
+                var callFunction = "get";
+                //var callArgs = "[\"" + $("#search_value").val() + "\"]"; //in the form of ["args"]
+                var arg = $("#search_value").val()
+                var callArgs = JSON.stringify([arg]);  //推荐用 JSON.stringify 来生成参数字符串,这样会避免出错!
+                var contract = {
+                    "function": callFunction,
+                    "args": callArgs
+                }
+                neb.api.call(from,dappAddress,value,nonce,gas_price,gas_limit,contract).then(function (resp) {
+                    cbSearch(resp)
+                }).catch(function (err) {
+                    //cbSearch(err)
+                    console.log("error:" + err.message)
+                })
+            })
+            //return of search,
+            function cbSearch(resp) {
+                var result = resp.result    ////resp is an object, resp.result is a JSON string
+                console.log("return of rpc call: " + JSON.stringify(result))
+                var resultString = JSON.stringify(result);
+                if(resultString.search("key") !== -1 && resultString.search("value") !== -1){
+                    result = JSON.parse(result)
+                    $(".add_banner").addClass("hide");
+                    $(".result_faile").addClass("hide");
+                    $("#search_banner").text($("#search_value").val())
+                    $("#search_result").text(result.value)
+                    $("#search_result_author").text(result.author)
+                    $(".result_success").removeClass("hide");
+                }
+                if(resultString.search('"null"') !== -1){
+                    $(".add_banner").addClass("hide");
+                    $(".result_success").addClass("hide");
+                    $("#result_faile_add").text($("#search_value").val())
+                    $(".result_faile").removeClass("hide");
+                }
+                if(resultString.search("error") !== -1){
+                    $(".add_banner").addClass("hide");
+                    $(".result_faile").addClass("hide");
+                    $("#search_banner").text($("#search_value").val())
+                    $("#search_result").text(result)
+                    $("#search_result_author").text("")
+                    $(".result_success").removeClass("hide");
+                }
+            }
+            // 交易NAS
+            $("#add").click(function() {
+                $(".result_faile").addClass("hide");
+                $(".add_banner").removeClass("hide");
+                $("#add_value").val("")
+            })
+            var NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
+            var nebPay = new NebPay();
+            var serialNumber
+            //var callbackUrl = NebPay.config.mainnetUrl;   //如果合约在主网,则使用这个
+            var callbackUrl = NebPay.config.testnetUrl;   //
+            $("#push").click(function() {
+                clearInterval(intervalQuery);
+                //console.log("clear intervalQuery=" + intervalQuery)
+                var to = dappAddress;
+                var value = "0";
+                var callFunction = "save"
+                //var callArgs = "[\"" + $("#search_value").val() + "\",\"" + $("#add_value").val() + "\"]"
+                var arg1 = $("#search_value").val(),
+                    arg2 = $("#add_value").val();
+                var callArgs = JSON.stringify([arg1, arg2]);
+                serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+                    listener: cbPush,       //设置listener, 处理交易返回信息
+                    callback: callbackUrl
+                });
+                intervalQuery = setInterval(function () {
+                    //console.log("querying intervalQuery=" + intervalQuery)
+                    funcIntervalQuery();
+                }, 6000);
+            });
+            var intervalQuery
+            function funcIntervalQuery() {
+                var options = {
+                    callback: callbackUrl
+                }
+                nebPay.queryPayInfo(serialNumber,options)   //search transaction result from server (result upload to server by app)
+                    .then(function (resp) {
+                        console.log("tx result: " + resp)   //resp is a JSON string
+                        var respObject = JSON.parse(resp)
+                        if(respObject.code === 0 && respObject.data.status !== 2){
+                            clearInterval(intervalQuery);
+                            //console.log("clear intervalQuery=" + intervalQuery)
+                            if(respObject.data.status === 1)
+                                alert(`Saving {${$("#search_value").val()} : ${$("#add_value").val()}} into super-dictionary successfully!`);
+                            else if(respObject.data.status === 0){
+                                alert(`Saving ${$("#search_value").val()} into super-dictionary failed!\n"${respObject.data.execute_error}"`);
+                            }
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                    });
+            }
+            function cbPush(resp) {
+                console.log("response of push: " + JSON.stringify(resp))
+                var respString = JSON.stringify(resp);
+                if(respString.search("rejected by user") !== -1){
+                    clearInterval(intervalQuery)
+                    alert(respString)
+                }else if(respString.search("txhash") !== -1){
+                    //alert("wait for tx result: " + resp.txhash)
+                }
+            }
+        </script>
 </body>
 
 </html>

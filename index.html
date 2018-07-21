@@ -76,7 +76,8 @@
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" id="account" type="search" style="width: 65%;" value="1" disabled>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" disabled style="width: 33%;">@ 1.22 NAS</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 33%;">@ -- NAS</button>
+                            <span id="price" style="display: none;"></span>
                         </form>
                     </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -94,8 +95,8 @@
                         </label>
                     </div>
                     <div class="click">
-                        <button type="button" class="btn btn-primary btn-lg" style="width: 49%;">Send NAS</button>
-                        <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;">Use Vault</button>
+                        <button type="button" class="btn btn-primary btn-lg" style="width: 49%;" id="buy">Purchase key</button>
+                        <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;" id="receiving">Receiving dividends</button>
                         <div class="word" style="text-align: center;margin-top: 20px;">
                             Send nas, or use earnings from your vault!
                         </div>
@@ -108,15 +109,15 @@
                 <div class="data_banner">
                     <div class="active_pot data_words" >
                         <span>Active Pot</span>
-                        <span style="float: right">1,888 NAS</span>
+                        <span id="pond" style="float: right">-- NAS</span>
                     </div>
                     <div class="keys data_words">
                         <span>Your Keys</span>
-                        <span style="float: right">1,888</span>
+                        <span id="keyCountOfAddress" style="float: right">--</span>
                     </div>
                     <div class="earnings data_words">
                         <span>Your Earnings</span>
-                        <span style="float: right">1,888 NAS</span>
+                        <span  id="bonus" style="float: right">-- NAS</span>
                     </div>
                 </div>
             </div>
@@ -198,23 +199,23 @@
             //     $("#search_value").attr("disabled",false)
             //     $("#search").attr("disabled",false)
             // }
-            var dappAddress = "n1oXdmwuo5jJRExnZR5rbceMEyzRsPeALgm";
+            var dappAddress = "n21SeNmHAThCToeCNMpbPRpyFyjEdfBwib7";
             //here we use neb.js to call the "get" function to search from the Dictionary
             var nebulas = require("nebulas"),
                 Account = nebulas.Account,
                 neb = new nebulas.Neb();
             neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
             // 页面加载时请求数据
-            $("#search").click(function(){
+            $().ready(function(){
                 // $("#search_value").val() 搜索框内的值
                 var from = Account.NewAccount().getAddressString();
                 var value = "0";
                 var nonce = "0"
                 var gas_price = "1000000"
                 var gas_limit = "2000000"
-                var callFunction = "get";
+                var callFunction = "getInfo";
                 //var callArgs = "[\"" + $("#search_value").val() + "\"]"; //in the form of ["args"]
-                var arg = $("#search_value").val()
+                var arg = ''
                 var callArgs = JSON.stringify([arg]);  //推荐用 JSON.stringify 来生成参数字符串,这样会避免出错!
                 var contract = {
                     "function": callFunction,
@@ -229,55 +230,40 @@
             })
             //return of search,
             function cbSearch(resp) {
-                var result = resp.result    ////resp is an object, resp.result is a JSON string
-                console.log("return of rpc call: " + JSON.stringify(result))
-                var resultString = JSON.stringify(result);
-                if(resultString.search("key") !== -1 && resultString.search("value") !== -1){
-                    result = JSON.parse(result)
-                    $(".add_banner").addClass("hide");
-                    $(".result_faile").addClass("hide");
-                    $("#search_banner").text($("#search_value").val())
-                    $("#search_result").text(result.value)
-                    $("#search_result_author").text(result.author)
-                    $(".result_success").removeClass("hide");
-                }
-                if(resultString.search('"null"') !== -1){
-                    $(".add_banner").addClass("hide");
-                    $(".result_success").addClass("hide");
-                    $("#result_faile_add").text($("#search_value").val())
-                    $(".result_faile").removeClass("hide");
-                }
-                if(resultString.search("error") !== -1){
-                    $(".add_banner").addClass("hide");
-                    $(".result_faile").addClass("hide");
-                    $("#search_banner").text($("#search_value").val())
-                    $("#search_result").text(result)
-                    $("#search_result_author").text("")
-                    $(".result_success").removeClass("hide");
-                }
+                var result = JSON.parse( resp.result );   ////resp is an object, resp.result is a JSON string
+                // console.log("return of rpc call: " + JSON.stringify(result))
+                console.log(result);
+                // var resultString = JSON.stringify(result);
+                $("#pond").text(result.pond/1000000000000000000 +" NAS");
+                $("#keyCountOfAddress").text(result.keyCountOfAddress);
+                $("#bonus").text(result.bonus +" NAS");
+                $("#keyPrice").text("@" +result.keyPrice /1000000000000000000 +" NAS");
+                $("#price").text(result.keyPrice /1000000000000000000);
+                
             }
             // 交易NAS
-            $("#add").click(function() {
-                $(".result_faile").addClass("hide");
-                $(".add_banner").removeClass("hide");
-                $("#add_value").val("")
-            })
+            // $("#add").click(function() {
+            //     $(".result_faile").addClass("hide");
+            //     $(".add_banner").removeClass("hide");
+            //     $("#add_value").val("")
+            // })
             var NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
             var nebPay = new NebPay();
             var serialNumber
             //var callbackUrl = NebPay.config.mainnetUrl;   //如果合约在主网,则使用这个
             var callbackUrl = NebPay.config.testnetUrl;   //
-            $("#push").click(function() {
+
+            // 购买key
+            $("#buy").click(function() {
                 clearInterval(intervalQuery);
                 //console.log("clear intervalQuery=" + intervalQuery)
                 var to = dappAddress;
-                var value = "0";
-                var callFunction = "save"
-                //var callArgs = "[\"" + $("#search_value").val() + "\",\"" + $("#add_value").val() + "\"]"
-                var arg1 = $("#search_value").val(),
-                    arg2 = $("#add_value").val();
-                var callArgs = JSON.stringify([arg1, arg2]);
-                serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+                var value = $('#price').text() * $("#account").val();
+                var callFunction = "buyKey"
+                var callArgs = "[]"
+                var arg = ""
+                // var callArgs = JSON.stringify(arg);
+                serialNumber = nebPay.call(to, value, callFunction,callArgs, {    //使用nebpay的call接口去调用合约,
                     listener: cbPush,       //设置listener, 处理交易返回信息
                     callback: callbackUrl
                 });
@@ -299,7 +285,7 @@
                             clearInterval(intervalQuery);
                             //console.log("clear intervalQuery=" + intervalQuery)
                             if(respObject.data.status === 1)
-                                alert(`Saving {${$("#search_value").val()} : ${$("#add_value").val()}} into super-dictionary successfully!`);
+                                alert(`successfully!`);
                             else if(respObject.data.status === 0){
                                 alert(`Saving ${$("#search_value").val()} into super-dictionary failed!\n"${respObject.data.execute_error}"`);
                             }

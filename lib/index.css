@@ -149,7 +149,7 @@ body{
     margin: 100px auto;
 }
 .banner .order{
-    /* width: 100%; */
+    width: 48%;
     height: 700px;
     background: #222;
         background-image: -webkit-linear-gradient(top, #222, #333, #333, #222); 
@@ -164,7 +164,7 @@ body{
         
 }
 .banner .data{
-    /* width: 100%; */
+    width: 48%;
     height: 700px;
     background: #222;
         background-image: -webkit-linear-gradient(top, #222, #333, #333, #222); 
@@ -175,7 +175,7 @@ body{
         border-radius: 5px;
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
         display: inline-block;
-        float: left;
+        float: right;
 }
 
 .order_list{
@@ -377,5 +377,6 @@ body{
         font-size: 20px;
         margin-top: 50px;
     }
+    
     
 }

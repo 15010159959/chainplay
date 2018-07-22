@@ -369,7 +369,7 @@
                         //console.log("clear intervalQuery=" + intervalQuery)
                         if (respObject.data.status === 1) {
                             var execute_result = JSON.parse(respObject.data.execute_result);
-                            alert(" successfully! 你买了" + execute_result.amount +"个,"+ execute_result.price / 1000000000000000000+"nas");
+                            alert(" successfully! you bought" + execute_result.amount +"keys,"+ execute_result.price / 1000000000000000000+"nas");
                             // location.reload() ;  刷新页面
 
                             // 再次请求 购买成功之后的数据

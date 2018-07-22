@@ -93,10 +93,12 @@
                         <label class="btn btn-secondary active" id="add10">
                             <input type="radio" name="options" autocomplete="off"> + 10
                         </label>
+                        <label class="btn btn-secondary active" id="clear">
+                            <input type="radio" name="options" autocomplete="off">  clear
+                        </label>
                     </div>
                     <div class="click">
-                        <button type="button" class="btn btn-primary btn-lg" style="width: 49%;" id="buy">Purchase key</button>
-                        <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;" id="receiving">Dividends</button>
+                        <button type="button" class="btn btn-primary btn-lg" style="width: 49%;" id="buy">Purchase key</button> 
                         <div class="word" style="text-align: center;margin-top: 20px;">
                             Send nas, or use earnings from your vault!
                         </div>
@@ -119,6 +121,8 @@
                         <span>Your Earnings</span>
                         <span id="bonus" style="float: right">-- NAS</span>
                     </div>
+
+                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 60px;float: right;" id="receiving">Dividends</button>
                 </div>
             </div>
         </div>
@@ -186,6 +190,9 @@
             })
             $("#add10").click(function () {
                 $("#account").val(parseInt($("#account").val()) + 10);
+            })
+            $("#clear").click(function () {
+                $("#account").val(0);
             })
 
         });

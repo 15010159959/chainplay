@@ -93,6 +93,9 @@
                         <label class="btn btn-secondary active" id="add10">
                             <input type="radio" name="options" autocomplete="off"> + 10
                         </label>
+                        <label class="btn btn-secondary " id="add100">
+                            <input type="radio" name="options" autocomplete="off"> + 100
+                        </label>
                         <label class="btn btn-secondary active" id="clear">
                             <input type="radio" name="options" autocomplete="off">  clear
                         </label>
@@ -190,6 +193,9 @@
             })
             $("#add10").click(function () {
                 $("#account").val(parseInt($("#account").val()) + 10);
+            })
+            $("#add100").click(function () {
+                $("#account").val(parseInt($("#account").val()) + 100);
             })
             $("#clear").click(function () {
                 $("#account").val(0);

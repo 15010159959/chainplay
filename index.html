@@ -72,7 +72,7 @@
                 <div class="order_banner">
                     <h3>Key shop</h3>
                     <hr style="border-color: gray">
-                    <h5>Purchases of .1 NAS or more have a 1.3% chance to win some of the 2.23 NAS airdrop pot, instantly!</h5>
+                    <h5>购买key收获分红，并有机会获得全部奖池！</h5>
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" id="account" type="search" style="width: 65%;" value="1" disabled>
@@ -145,6 +145,9 @@
             Account = nebulas.Account,
             neb = new nebulas.Neb();
         var from = Account.NewAccount().getAddressString();
+        var keepSixFloat = function(v) {
+            return parseInt(v*1000000)/1000000;
+        }
         $(function () {
 
             // 倒计时
@@ -217,7 +220,7 @@
         //     $("#search_value").attr("disabled",false)
         //     $("#search").attr("disabled",false)
         // }
-        var dappAddress = "n1yoxJQqURXft9tdcAeLBcN5p7xswuYydBN";
+        var dappAddress = "n21b4getBaVwMpwLvkxbXTgmzETsKzFWeui";
         //here we use neb.js to call the "get" function to search from the Dictionary
         var nebulas = require("nebulas"),
             Account = nebulas.Account,
@@ -251,10 +254,10 @@
             // console.log("return of rpc call: " + JSON.stringify(result))
             console.log(result);
             // var resultString = JSON.stringify(result);
-            $("#pond").text(result.pond / 1000000000000000000 + " NAS");
+            $("#pond").text((result.pond / 1000000000000000000).toFixed(5) + " NAS");
             $("#keyCountOfAddress").text(result.keyCountOfAddress);
-            $("#bonus").text(result.bonus + " NAS");
-            $("#keyPrice").text("@" + result.keyPrice / 1000000000000000000 + " NAS");
+            $("#bonus").text((result.bonus/1000000000000000000).toFixed(5) + " NAS");
+            $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
             $("#price").text(result.keyPrice / 1000000000000000000);
             console.log("====", result.keyPrice);
 
@@ -287,10 +290,10 @@
                             neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
                                 // cbSearch(resp)
                                 var result = JSON.parse(resp.result);
-                                $("#pond").text(result.pond / 1000000000000000000 + " NAS");
+                                $("#pond").text((result.pond / 1000000000000000000).toFixed(5) + " NAS");
                                 $("#keyCountOfAddress").text(result.keyCountOfAddress);
-                                $("#bonus").text(result.bonus / 1000000000000000000 + " NAS");
-                                $("#keyPrice").text("@" + result.keyPrice / 1000000000000000000 + " NAS");
+                                $("#bonus").text((result.bonus / 1000000000000000000).toFixed(5) + " NAS");
+                                $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
                                 $("#price").text(result.keyPrice / 1000000000000000000);
                                 target_date = result.deadline;
 
@@ -390,10 +393,10 @@
                             neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
                                 // cbSearch(resp)
                                 var result = JSON.parse(resp.result);
-                                $("#pond").text(result.pond / 1000000000000000000 + " NAS");
+                                $("#pond").text((result.pond / 1000000000000000000).toFixed(5) + " NAS");
                                 $("#keyCountOfAddress").text(result.keyCountOfAddress);
-                                $("#bonus").text(result.bonus / 1000000000000000000 + " NAS");
-                                $("#keyPrice").text("@" + result.keyPrice / 1000000000000000000 + " NAS");
+                                $("#bonus").text((result.bonus / 1000000000000000000).toFixed(5) + " NAS");
+                                $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
                                 $("#price").text(result.keyPrice / 1000000000000000000);
                                 target_date = result.deadline;
 

@@ -150,7 +150,7 @@ body{
 }
 .banner .order{
     width: 48%;
-    height: 700px;
+    height: 500px;
     background: #222;
         background-image: -webkit-linear-gradient(top, #222, #333, #333, #222); 
         background-image:    -moz-linear-gradient(top, #222, #333, #333, #222);
@@ -165,7 +165,7 @@ body{
 }
  .data{
     width: 48%;
-    height: 700px;
+    height: 500px;
     background: #222;
         background-image: -webkit-linear-gradient(top, #222, #333, #333, #222); 
         background-image:    -moz-linear-gradient(top, #222, #333, #333, #222);
@@ -198,6 +198,23 @@ body{
 .data_words{
     font-size: 30px;
     margin-top: 50px;
+}
+
+.introduction{
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    background-color: #fff;
+    top: 10%;
+    left: 33%;
+    z-index: 2;
+    border-radius: 5px;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block
 }
 
 

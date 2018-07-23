@@ -11,30 +11,29 @@
 </head>
 
 <body>
+    <!-- 导航 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Holday</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" id="showIntroduction">
+                    <a class="nav-link" href="#">Introduction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contract</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">中/EN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
-
-        <!-- 导航 -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Holday</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Introduction</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contract</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">中/EN</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
 
         <!-- 倒计时 -->
         <div class="time">
@@ -116,14 +115,21 @@
             </div>
         </div>
 
+        <!-- introduction -->
+        <div class="introduction hide" id="indroduction">
+
+        </div>
+
         <!-- loading -->
         <div class="fade loading modal" data-backdrop=static>
-                <div class=modal-dialog>
-                    <div class=modal-body style="text-align: center;">
-                        <img src="images/loading-icon-1.gif" alt="">
-                    </div>
+            <div class=modal-dialog>
+                <div class=modal-body style="text-align: center;">
+                    <img src="../images/loading-icon-1.gif" alt="">
                 </div>
             </div>
+        </div>
+
+
 
 
 
@@ -199,6 +205,11 @@
                 $("#account").val(0);
             })
 
+            // 显示简介规则玩法
+            $("#showIntroduction").click(function(){
+                $("#introduction").removeClass("hide");
+            })
+
         });
     </script>
     <script>
@@ -215,7 +226,7 @@
         //     $("#search_value").attr("disabled",false)
         //     $("#search").attr("disabled",false)
         // }
-        var dappAddress = "n21b4getBaVwMpwLvkxbXTgmzETsKzFWeui";
+        var dappAddress = "n1v9fhvoxMmcbgMUB1o16f3XpsmRYWBh6ta";
         //here we use neb.js to call the "get" function to search from the Dictionary
         var nebulas = require("nebulas"),
             Account = nebulas.Account,
@@ -224,7 +235,7 @@
         // 页面加载时请求数据
         $().ready(function () {
             // $("#search_value").val() 搜索框内的值
-            // $(".modal.loading").modal("show");
+            $(".modal.loading").modal("show");
             var value = "0";
             var nonce = "0"
             var gas_price = "1000000"
@@ -256,7 +267,7 @@
             $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
             $("#price").text(result.keyPrice / 1000000000000000000);
             console.log("====", result.keyPrice);
-
+            $(".modal.loading").modal("hide");
 
             // 倒计时
 
@@ -339,6 +350,7 @@
         $("#buy").click(function () {
             clearInterval(intervalQuery);
             //console.log("clear intervalQuery=" + intervalQuery)
+            $(".modal.loading").modal("show");
             var to = dappAddress;
             var value = $('#price').text() * $("#account").val();
             var callFunction = "buyKey"
@@ -356,7 +368,7 @@
         });
 
         //  领取分红奖励
-        
+
         // $("#getBouns").click(function () {
         //     clearInterval(intervalQuery);
         //     //console.log("clear intervalQuery=" + intervalQuery)
@@ -381,17 +393,19 @@
             var options = {
                 callback: callbackUrl
             }
+            $(".modal.loading").modal("hide");
             nebPay.queryPayInfo(serialNumber, options)   //search transaction result from server (result upload to server by app)
                 .then(function (resp) {
                     console.log("tx result: " + resp)   //resp is a JSON string
                     var respObject = JSON.parse(resp);
+                    $(".modal.loading").modal("hide");
                     console.log(respObject);
                     if (respObject.code === 0 && respObject.data.status !== 2) {
                         clearInterval(intervalQuery);
                         //console.log("clear intervalQuery=" + intervalQuery)
                         if (respObject.data.status === 1) {
                             var execute_result = JSON.parse(respObject.data.execute_result);
-                            alert(" successfully! you bought "  + execute_result.amount + " keys, " + execute_result.price / 1000000000000000000 +  " nas");
+                            alert(" successfully! you bought " + execute_result.amount + " keys, " + execute_result.price / 1000000000000000000 + " nas");
                             // location.reload() ;  刷新页面
 
                             // 再次请求 购买成功之后的数据
@@ -418,13 +432,16 @@
                                 $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
                                 $("#price").text(result.keyPrice / 1000000000000000000);
                                 target_date = result.deadline;
+                                $(".modal.loading").modal("hide");
 
                             }).catch(function (err) {
                                 //cbSearch(err)
                                 console.log("error:" + err.message)
+                                $(".modal.loading").modal("hide");
                             })
                         } else if (respObject.data.status === 0) {
                             alert(respObject.data.execute_error);
+                            $(".modal.loading").modal("hide");
                         }
                     }
                 })

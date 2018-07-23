@@ -115,6 +115,16 @@
                 </div>
             </div>
         </div>
+         <!-- loading -->
+         <div class="fade loading modal" data-backdrop=static>
+                <div class=modal-dialog>
+                    <div class=modal-body style="text-align: center;">
+                        <img src="images/loading-icon-1.gif" alt="">
+                    </div>
+                </div>
+            </div>
+    
+    
     </div>
 
     <script src="lib/jquery-3.3.1.min.js"></script>
@@ -212,6 +222,7 @@
         // 页面加载时请求数据
         $().ready(function () {
             // $("#search_value").val() 搜索框内的值
+            $(".modal.loading").modal("show");
             var value = "0";
             var nonce = "0"
             var gas_price = "1000000"
@@ -243,6 +254,7 @@
             $("#keyPrice").text("@" + (result.keyPrice / 1000000000000000000).toFixed(5) + " NAS");
             $("#price").text(result.keyPrice / 1000000000000000000);
             console.log("====", result.keyPrice);
+            $(".modal.loading").modal("hide");
 
 
             // 倒计时
@@ -325,6 +337,7 @@
         // 购买key
         $("#buy").click(function () {
             clearInterval(intervalQuery);
+            $(".modal.loading").modal("show");
             //console.log("clear intervalQuery=" + intervalQuery)
             var to = dappAddress;
             var value = $('#price').text() * $("#account").val();
@@ -372,6 +385,7 @@
                 .then(function (resp) {
                     console.log("tx result: " + resp)   //resp is a JSON string
                     var respObject = JSON.parse(resp);
+                    $(".modal.loading").modal("hide");
                     console.log(respObject);
                     if (respObject.code === 0 && respObject.data.status !== 2) {
                         clearInterval(intervalQuery);

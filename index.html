@@ -64,8 +64,8 @@
                     <h5 style="font-size:16px;">购买珍珠为转化兽增加生命并可获得分红，如果你是最后一个购买珍珠的人还会获得最后的奖池奖励！</h5>
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 65%;" value="1" disabled>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 33%;">@ -- NAS</button>
+                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 50%;" value="1" disabled>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 40%;">/ -- NAS</button>
                             <span id="price" style="display: none;"></span>
                         </form>
                     </div>
@@ -113,11 +113,14 @@
                         <span>累积分红收益:</span>
                         <span id="bonus" style="float: right">-- NAS</span>
                     </div>
-
-                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 60px;float: right;" id="getBonus">获得分红</button>
-                    <div class="hour" style="    margin-top: 120px;text-align: right;">
-                        <i>每小时分红一次, 可累积后一次性领取</i>
+                    <div class="earnings data_words">
+                        <span>待领分红收益:</span>
+                        <span id="unbonus" style="float: right">-- NAS</span>
                     </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 22px;float: right;" id="getBonus">获得分红</button>
+                <div class="hour" style="margin-top: 90px;text-align: right;">
+                    <i>每小时分红一次, 可累积后一次性领取</i>
                 </div>
             </div>
         </div>
@@ -132,7 +135,7 @@
             <p style="font-size: 14px;color: #808080;"> 1、转化兽是基于星云链的一个应用, 需要依赖星云chrome钱包插件，安装地址:<a target="_blank" href='https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco'>Chrome Web Store</a></p>
             <p style="font-size: 14px;color: #808080;"> 2、转化兽只有24小时的生命，可以通过购买珍珠延续它的生命。当每购买一个珍珠时，时间都会加增加30s，当达到24小时将不再增加</p>
             <p style="font-size: 14px;color: #808080;"> 3、你购买珍珠不仅延续了转化兽的生命，你还会得到转化兽的分红奖励 </p>
-            <p style="font-size: 14px;color: #808080;"> 4、如果你足够幸运的话，你会得到转化兽所珍藏的所有珍珠</p>
+            <p style="font-size: 14px;color: #808080;"> 4、如果你足够幸运的话，你会和另外6个人一起得到转化兽所珍藏的所有珍珠</p>
             <p style="font-size: 14px;color: #808080;"> 5、珍珠会随着购买数量的增加，价格缓慢增长</p>
         </div>
 

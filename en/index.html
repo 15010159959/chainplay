@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../lib/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/index.css">
-    <title>Holday</title>
+    <title>Melo the Converter</title>
 </head>
 
 <body>
     <!-- 导航 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Holday</a>
+        <a class="navbar-brand" href="#">Melo the Converter</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,7 +37,7 @@
         <!-- 倒计时 -->
         <div class="time">
             <div id="countdown">
-                <div style="text-align: center;margin-bottom: 5px;">转化兽生命值</div>
+                <div style="text-align: center;margin-bottom: 5px;">Life of Melo the Converter</div>
 
                 <div id='tiles'></div>
                 <div class="labels">
@@ -55,17 +55,17 @@
         <div class="banner">
             <div class=" order col-md-6 ">
                 <div class="order_banner">
-                    <h3>Key shop
+                    <h3>Pearls
                         <span class="icon">
                             <img src="../images/sharp_help_outline_white_18dp.png" alt="">
                         </span>
                     </h3>
                     <hr style="border-color: gray">
-                    <h5>购买key收获分红，并有机会获得全部奖池！</h5>
+                    <h5>Buy pearls adds life to the converted beast and gains dividends.</h5>
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 65%;" value="1" disabled>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 33%;">@ -- NAS</button>
+                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 50%;" value="1" disabled>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 43%;">/ -- NAS</button>
                             <span id="price" style="display: none;"></span>
                         </form>
                     </div>
@@ -106,37 +106,42 @@
                         <span id="pond" style="float: right">-- NAS</span>
                     </div>
                     <div class="keys data_words">
-                        <span>珍珠数</span>
+                        <span>Peals</span>
                         <span id="keyCountOfAddress" style="float: right">--</span>
                     </div>
                     <div class="earnings data_words">
-                        <span>累计分红</span>
+                        <span>Rewards</span>
                         <span id="bonus" style="float: right">-- NAS</span>
                     </div>
+                    <div class="earnings data_words">
+                        <span>Unreceived</span>
+                        <span id="unbonus" style="float: right">-- NAS</span>
+                    </div>
 
-                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 60px;float: right;" id="getBonus">GetBonus</button>
+                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 55px;float: right;" id="getBonus">GetBonus</button>
                     <div class="hour" style="margin-top: 120px;text-align: right;">
-                        <i>每小时分红一次, 可累积后一次性领取</i>
+                        <i>Dividends once per hour, can be collected once after accumulation</i>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- introduction -->
-        <div class="introduction hide" id="indroduction">
-            <h3 style="display: inline-block; color: #000">holday</h3>
+        <div class="introduction hide" id="indroduction" style="height:650px; width:600px;">
+            <h3 style="display: inline-block; color: #000">Melo the Converter</h3>
             <span class="clear">
                 <img src="../images/baseline_clear_black_18dp.png" alt="">
             </span>
-            <p style="font-size: 20px;font-weight: 500;line-height: 30px;">很久很久之前，在一个神秘美妙的星球上有一个神奇的动物，可以把一个珍珠变为很多珍珠，人们称它转化兽，然而他只有24小时的生命，为了延续他的生命，大家不断的喂它珍珠以延续生命，同时转化兽把珍珠回馈给人们。如果转化兽度过自己24的生命时，它会把自己珍藏的所有珍珠献给最后一个延续它生命的人</p>
-            <p style="font-size: 16px;"> 1、转化兽是基于星云链的一个应用</p>
-            <p style="font-size: 16px;"> 2、转化兽只有24小时的生命，可以通过购买珍珠延续它的生命。当每购买一个珍珠时，时间都会加增加30s，当达到24小时将不再增加</p>
-            <p style="font-size: 16px;"> 3、你购买珍珠不仅延续了转化兽的生命，你还会得到转化兽的分红奖励 </p>
-            <p style="font-size: 16px;"> 4、如果你足够幸运的话，你会得到转化兽所珍藏的所有珍珠</p>
+            <p style="font-size: 20px;font-weight: 500;line-height: 30px;">A long time ago, on a mysterious and wonderful planet, there was a magical animal that could turn a pearl into a lot of pearls. People called it a beast, but he only had 24 hours of life. In order to continue his life, everyone kept feeding. Its pearls continue life and transform the beast to give back pearls to people. If the conversion animal spends 24 lives, it will dedicate all the pearls it has collected to the last person who continues its life.</p>
+            <p style="font-size: 16px;"> 1、Melo the Converter is an application based on the nebulas chain. It needs to rely on the nebula chrome wallet plugin. The installation address is:<a target="_blank" href='https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco'>Chrome Web Store</a></p>
+            <p style="font-size: 16px;"> 2、The converted beast has only 24 hours of life and can continue its life by buying pearls. Whenever you buy a pearl, the time will increase by 30s, and when it reaches 24 hours, it will not increase.</p>
+            <p style="font-size: 16px;"> 3、Your purchase of pearls not only continues the life of the transformed beast, you will also receive a bonus bonus for the transformed beast. </p>
+            <p style="font-size: 16px;"> 4、If you are lucky enough, you will get all the pearls that the converted beast collects with the other 6 people.</p>
+            <p style="font-size: 16px;"> 5、Pearl will grow slowly as the number of purchases increases.</p>
         </div>
 
         <!-- loading -->
-        <div class="fade loading modal" data-backdrop=static>
+        <div class="fade loading modal" data-backdrop=static id="loading">
             <div class=modal-dialog>
                 <div class=modal-body style="text-align: center;">
                     <img src="../images/loading-icon-1.gif" alt="">

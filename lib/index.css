@@ -190,7 +190,8 @@ ul>li>a {
 }
 
 .order_list {
-    margin-top: 66px;
+    margin-top: 60px;
+    margin-bottom: 6px;
 }
 
 .click {

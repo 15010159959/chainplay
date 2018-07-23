@@ -11,7 +11,8 @@ body{
     background-image:     -ms-linear-gradient(top, #222, #333, #333, #222);
     background-image:      -o-linear-gradient(top, #222, #333, #333, #222);
     border: 1px solid #111;
-	border-radius: 5px;
+    border-radius: 5px;
+    z-index: 2;
 }
 .bg-light > a ,ul>li>a{
     color: #fff !important;
@@ -243,6 +244,26 @@ body{
     height: 100%;
 }
 
+.msg{
+    position: absolute;
+    width: 30%;
+    height: 110px;
+    background-color: #fff;
+    top: 10%;
+    left: 35%;
+    z-index: 2;
+    border-radius: 5px;
+    color: #000;
+    font-size: 18px;
+    padding: 2px;
+}
+.message{
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
+
 
 
 @media screen and (max-width: 500px) {
@@ -433,6 +454,26 @@ body{
         padding: 20px;
         color: #000;
     }
+
+.msg{
+    position: absolute;
+    width: 60%;
+    height: 110px;
+    background-color: #fff;
+    top: 10%;
+    left: 20%;
+    z-index: 2;
+    border-radius: 5px;
+    color: #000;
+    font-size: 18px;
+    padding: 2px;
+}
+.message{
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
     
     
 }

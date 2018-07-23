@@ -209,8 +209,9 @@
         // $("#search").attr("disabled",true)
         // //to check if the extension is installed
         // //if the extension is installed, var "webExtensionWallet" will be injected in to web page
-        // if(typeof(webExtensionWallet) === "undefined"){
-        //     //alert ("Extension wallet is not installed, please install it first.")
+        if(typeof(webExtensionWallet) === "undefined"){
+            alert ("Extension wallet is not installed, please install it first.")
+        }
         //     $("#noExtension").removeClass("hide")
         // }else{
         //     $("#search_value").attr("disabled",false)

@@ -34,10 +34,11 @@
         </div>
     </nav>
     <div class="container">
-
         <!-- 倒计时 -->
         <div class="time">
             <div id="countdown">
+                    <div style="text-align: center;margin-bottom: 5px;">转化兽生命值</div>
+
                 <div id='tiles'></div>
                 <div class="labels">
                     <li>Hours</li>
@@ -113,7 +114,7 @@
                         <span id="bonus" style="float: right">-- NAS</span>
                     </div>
 
-                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 60px;float: right;" id="getBouns">获得分红</button>
+                    <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 60px;float: right;" id="getBonus">获得分红</button>
                     <div class="hour" style="    margin-top: 120px;text-align: right;">
                         <i>每小时分红一次, 可累积后一次性领取</i>
                     </div>
@@ -127,15 +128,16 @@
             <span class="clear">
                 <img src=" images/baseline_clear_black_18dp.png" alt="">
             </span>
-            <p style="font-size: 20px;font-weight: 500;line-height: 30px;">很久很久之前，在一个神秘美妙的星球上有一个神奇的动物，可以把一个珍珠变为很多珍珠，人们称它转化兽，然而他只有24小时的生命，为了延续他的生命，大家不断的喂它珍珠以延续生命，同时转化兽把珍珠回馈给人们。如果转化兽度过自己24的生命时，它会把自己珍藏的所有珍珠献给最后一个延续它生命的人</p>
+            <p style="font-size: 20px;font-weight: 500;line-height: 30px;">很久很久之前，在一个神秘美妙的星球上有一个神奇的动物，可以把一个珍珠变为很多珍珠，人们称它转化兽，然而他只有24小时的生命，为了延续他的生命，大家不断的喂它珍珠以延续生命，同时转化兽把珍珠回馈给人们。如果转化兽度过自己24的生命时，它会把自己珍藏的所有珍珠献给最后7个人延续它生命的人</p>
             <p style="font-size: 14px;color: #808080;"> 1、转化兽是基于星云链的一个应用, 需要依赖星云chrome钱包插件，安装地址:<a target="_blank" href='https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco'>Chrome Web Store</a></p>
             <p style="font-size: 14px;color: #808080;"> 2、转化兽只有24小时的生命，可以通过购买珍珠延续它的生命。当每购买一个珍珠时，时间都会加增加30s，当达到24小时将不再增加</p>
             <p style="font-size: 14px;color: #808080;"> 3、你购买珍珠不仅延续了转化兽的生命，你还会得到转化兽的分红奖励 </p>
             <p style="font-size: 14px;color: #808080;"> 4、如果你足够幸运的话，你会得到转化兽所珍藏的所有珍珠</p>
+            <p style="font-size: 14px;color: #808080;"> 5、珍珠会随着购买数量的增加，价格缓慢增长</p>
         </div>
 
         <!-- loading -->
-        <div class="fade loading modal" data-backdrop=static>
+        <div class="fade loading modal" data-backdrop=static id="loading">
             <div class=modal-dialog>
                 <div class=modal-body style="text-align: center;">
                     <img src=" images/loading-icon-1.gif" alt="">

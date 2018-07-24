@@ -190,7 +190,8 @@ ul>li>a {
 }
 
 .order_list {
-    margin-top: 66px;
+    margin-top: 60px;
+    margin-bottom: 6px;
 }
 
 .click {
@@ -207,7 +208,7 @@ ul>li>a {
 }
 
 .data_words {
-    font-size: 24px;
+    font-size: 22px;
     margin-top: 20px;
 }
 
@@ -462,8 +463,8 @@ ul>li>a {
         padding: 5px 18px 18px;
     }
     .data_words {
-        font-size: 20px;
-        margin-top: 30px;
+        font-size: 18px;
+        margin-top: 28px;
     }
     .introduction {
         position: absolute;

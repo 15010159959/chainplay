@@ -42,7 +42,11 @@
             <div id="countdown">
                 <div style="text-align: center;margin-bottom: 5px;">Life of Melo the Converter</div>
 
-                <div id='countdown-time'></div>
+                <div id='countdown-time'>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>0</span>
+                </div>
                 <div class="labels">
                     <li>Hours</li>
                     <li>Mins</li>
@@ -152,25 +156,86 @@
             <p style="font-size: 16px;"> 5、Pearl will grow slowly as the number of purchases increases.</p>
         </div>
 
-        <!-- loading -->
-        <div class="fade loading modal" data-backdrop=static id="loading">
-            <div class=modal-dialog>
-                <div class=modal-body style="text-align: center;">
-                    <img src="../images/loading-icon-1.gif" alt="">
+        <div class="modal" tabindex="-1" role="dialog" id="introduction-dialog" style="color:#212529;" aria-labelledby="introductionLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Melo the Converter</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="font-size: 20px;font-weight: 500;line-height: 30px;">
+                            A long time ago, on a mysterious and wonderful planet, there was a magical animal that could turn a pearl into a lot of pearls.
+                            People called it a beast, but he only had 24 hours of life. In order to continue his life, everyone
+                            kept feeding. Its pearls continue life and Melo the Converter to give back pearls to people.
+                            If the conversion animal spends 24 lives, it will dedicate all the pearls it has collected to
+                            the last person who continues its life.</p>
+                        <p style="font-size: 16px;"> 1、Melo the Converter is an application based on the nebulas chain. It needs to rely on the nebula
+                            chrome wallet plugin. The installation address is:
+                            <a target="_blank" href='https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco'>Chrome Web Store</a>
+                        </p>
+                        <p style="font-size: 16px;"> 2、The converted beast has only 24 hours of life and can continue its life by buying pearls. Whenever
+                            you buy a pearl, the time will increase by 30s, and when it reaches 24 hours, it will not increase.</p>
+                        <p style="font-size: 16px;"> 3、Your purchase of pearls not only continues the life of the Melo the Converter, you will also receive
+                            a bonus bonus for the Melo the Converter. </p>
+                        <p style="font-size: 16px;"> 4、If you are lucky enough, you will get all the pearls that the converted beast collects with the
+                            other 6 people.</p>
+                        <p style="font-size: 16px;"> 5、Pearl will grow slowly as the number of purchases increases.</p>
+                    </div>
+
                 </div>
             </div>
         </div>
 
+        <!-- loading -->
+        <div class="fade loading modal" data-backdrop=static id="loading">
+            <div class=modal-dialog>
+                <div class=modal-body style="text-align: center;">
 
-        <!-- 操作提示 -->
-        <div class="msg hide " id="msg">
-            <h5 id="title" style="display: inline-block; color: #000"> </h5>
-            <span class="exit" id="exit">
-                <img src=" ../images/baseline_clear_black_18dp.png" alt="">
-            </span>
-            <span class="message"></span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-info" role="progressbar" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
+    <div class="modal" tabindex="-1" role="dialog" id="meloDialog" style="color:#212529;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="melo-dialog" style="color:#212529;" aria-labelledby="meloDialogLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="melo-dialog-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="melo-dialog-body">
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

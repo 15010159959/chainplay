@@ -502,3 +502,9 @@ ul>li>a {
         margin-top: 0px;
     }
 }
+
+.modal-body-introduction p {
+    font-size: 14px;
+    color: #808080;
+    margin-bottom: 5px;
+}

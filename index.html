@@ -27,13 +27,16 @@
                     <span class="nav-link" id="showIntroduction" style=" color: #fff !important;">玩法介绍</span>
                 </li>
                 <li class="nav-item">
+                    <span class="nav-link" id="share" style=" color: #fff !important;">邀请好友</span>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://explorer.nebulas.io/#/address/n1v8XdiWUAXzkYygQnxioeq6xRQr7X8DQdj">智能合约</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://nano.nebulas.io/">星云钱包</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="en/index.html">中/EN</a>
+                    <a class="nav-link" href="en/index.html">ENGLISH</a>
                 </li>
             </ul>
         </div>
@@ -71,7 +74,7 @@
                     <h5 style="font-size:16px; color:#ccc;">购买珍珠为转化兽增加生命并可获得分红，如果你是最后一个购买珍珠的人还会获得最后的奖池奖励！</h5>
                     <div class="order_list">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 50%;" value="1" disabled>
+                            <input class="form-control mr-sm-2" id="account" type="search" style="width: 50%;" value="10" disabled>
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="keyPrice" disabled style="width: 40%;">/ -- NAS</button>
                             <span id="price" style="display: none;"></span>
                         </form>
@@ -105,7 +108,11 @@
                 </div>
             </div>
             <div class=" data col-md-6 ">
-                <h3>数据</h3>
+                <h3>数据
+                    <span class="icon">
+                        <img src="images/sharp_help_outline_white_18dp.png" alt="">
+                    </span>
+                </h3>
                 <hr style="border-color: gray">
                 <div class="data_banner">
                     <div class="active_pot data_words">
@@ -125,7 +132,7 @@
                         <span id="unbonus" style="float: right">-- NAS</span>
                     </div>
                 </div>
-                <button type="button" class="btn btn-secondary btn-lg" style="width: 49%;margin-top: 22px;float: right;" id="getBonus">获得分红</button>
+                <button type="button" class="btn btn-secondary btn-lg" style="width: 48%;margin-top: 22px;float: right;" id="getBonus">获得分红</button>
                 <div class="hour" style="margin-top: 90px;text-align: right;">
                     <i>每10分钟分红一次, 可累积后一次性领取</i>
                 </div>
@@ -141,16 +148,18 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <p style="font-size: 20px;font-weight: 500;line-height: 30px;">很久很久之前，在一个神秘美妙的星球上有一个神奇的动物，可以把一个珍珠转化为n个珍珠，人们称它转化兽，然而他只有24小时的生命，为了延续他的生命，大家不断的喂它珍珠以延续生命，同时转化兽把珍珠回馈给人们。如果转化兽度过自己24的生命时，它会把自己珍藏的所有珍珠献给最后7个人延续它生命的人</p>
-                        <p style="font-size: 14px;color: #808080;"> 1、转化兽是基于星云链的一个应用, Web端需要依赖星云chrome钱包插件，安装地址:
+                    <div class="modal-body modal-body-introduction">
+                        <p style="font-size: 18px;line-height: 24px; color:#000;">很久很久之前，在一个神秘美妙的星球上有一个神奇的动物，可以把一个珍珠转化为n个珍珠，人们称它转化兽，然而他只有24小时的生命，为了延续他的生命，大家不断的喂它珍珠以延续生命，同时转化兽把珍珠回馈给人们。如果转化兽度过自己24的生命时，它会把自己珍藏的所有珍珠献给最后7个人延续它生命的人</p>
+                        <p> 1、转化兽是基于星云链的一个应用, Web端需要依赖星云chrome钱包插件，安装地址:
                             <a target="_blank" href='https://chrome.google.com/webstore/detail/nasextwallet/gehjkhmhclgnkkhpfamakecfgakkfkco'>Chrome Web Store</a>,移动端请下载
                             <a target="_blank" href="https://nano.nebulas.io/">Nas Nano</a>
                         </p>
-                        <p style="font-size: 14px;color: #808080;"> 2、转化兽只有24小时的生命，可以通过购买珍珠延续它的生命。当每购买一个珍珠时，时间都会加增加30s，当达到24小时将不再增加</p>
-                        <p style="font-size: 14px;color: #808080;"> 3、你购买珍珠不仅延续了转化兽的生命，你还会得到转化兽的分红奖励 </p>
-                        <p style="font-size: 14px;color: #808080;"> 4、如果你足够幸运的话，你会和另外6个人一起得到转化兽所珍藏的所有珍珠</p>
-                        <p style="font-size: 14px;color: #808080;"> 5、珍珠会随着购买数量的增加，价格缓慢增长</p>
+                        <p> 2、转化兽只有24小时的生命，可以通过购买珍珠延续它的生命。当每购买一个珍珠时，时间都会加增加30s，当达到24小时将不再增加</p>
+                        <p> 3、你购买珍珠不仅延续了转化兽的生命，你还会得到转化兽的分红奖励 </p>
+                        <p> 4、如果你足够幸运的话，你会和另外6个人一起得到转化兽所珍藏的所有珍珠</p>
+                        <p> 5、珍珠会随着购买数量的增加，价格缓慢增长,当转化兽的生命剩余半小时，珍珠的价格会快速增长</p>
+                        <p> 6、邀请你的好友一起参加，还可以得到分红</p>
+
                     </div>
 
                 </div>
@@ -193,7 +202,7 @@
     <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nebulas@0.5.5/dist/nebulas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nebpay.js@0.2.1/dist/nebPay.min.js"></script>
-    <script src="lib/index.js?v=1.2.8"></script>
+    <script src="lib/index.js?v=1.2.10"></script>
     <div style="display:none;">
         <script src="https://s22.cnzz.com/z_stat.php?id=1274258457&web_id=1274258457" language="JavaScript"></script>
     </div>

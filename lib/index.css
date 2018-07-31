@@ -447,6 +447,7 @@ ul>li>a {
         border-radius: 5px;
         box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
         padding-top: 6px;
+        margin-top:16px;
     }
     .order_list {
         margin-top: 66px;
@@ -460,7 +461,7 @@ ul>li>a {
         width: 90%;
         background-color: rgb(45, 50, 56);
         border-radius: 5px;
-        height: 220px;
+        height: 230px;
         padding: 5px 18px 18px;
     }
     .data_words {

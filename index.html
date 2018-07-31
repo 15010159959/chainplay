@@ -103,7 +103,7 @@
                     <div class="click" style="text-align: right;">
                         <button type="button" class="btn btn-primary btn-lg" style="width: 49%;" id="buy">购买珍珠</button>
                         <div class="word" style="text-align: right;margin-top: 20px;">
-                            <i>用NAS去购买“珍珠”</i>
+                            <i>用NAS去购买“珍珠” 投资有风险请理性投资</i>
                         </div>
                     </div>
                 </div>
@@ -121,21 +121,21 @@
                         <span id="pond" style="float: right">-- NAS</span>
                     </div>
                     <div class="keys data_words">
-                        <span style="font-size: 20px;font-weight: 400;">我购买的珍珠:</span>
+                        <span style="font-size: 20px;font-weight: 400;">我的珍珠:</span>
                         <span id="keyCountOfAddress" style="float: right">--</span>
                     </div>
                     <div class="earnings data_words">
-                        <span style="font-size: 20px;font-weight: 400;">累积分红收益:</span>
+                        <span style="font-size: 20px;font-weight: 400;">累积分红:</span>
                         <span id="bonus" style="float: right">-- NAS</span>
                     </div>
                     <div class="earnings data_words">
-                        <span style="font-size: 20px;font-weight: 400;">待领分红收益:</span>
+                        <span style="font-size: 20px;font-weight: 400;">未领分红:</span>
                         <span id="unbonus" style="float: right">-- NAS</span>
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary btn-lg shareFriends" style="width: 48%;margin-top: 22px;float: left;">邀请好友</button>
 
-                <button type="button" class="btn btn-secondary btn-lg" style="width: 48%;margin-top: 22px;float: right;" id="getBonus">获得分红</button>
+                <button type="button" class="btn btn-secondary btn-lg" style="width: 48%;margin-top: 22px;float: right;" id="getBonus">获取分红</button>
                 <div class="hour" style="margin-top: 90px;text-align: right;">
                     <i>每10分钟分红一次, 可累积后一次性领取</i>
                 </div>
@@ -200,12 +200,32 @@
         </div>
     </div>
 
+    <div class="modal" tabindex="-1" role="dialog" id="buy-dialog" style="color:#212529;"  aria-labelledby="buyDialogLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">温馨提示</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>投资有风险，请理性购买</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary goon-buy" >继续购买</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nebulas@0.5.5/dist/nebulas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nebpay.js@0.2.1/dist/nebPay.min.js"></script>
-    <script src="lib/index.js?v=1.4.2"></script>
+    <script src="lib/index.js?v=1.4.3"></script>
     <div style="display:none;">
         <script src="https://s22.cnzz.com/z_stat.php?id=1274258457&web_id=1274258457" language="JavaScript"></script>
     </div>
